@@ -1,0 +1,40 @@
+<style>
+  .task {
+    text-decoration: line-through;
+    color: #D2D2D2;
+  }
+</style>
+<ion-pane>
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">TODO APP</h1>
+  </ion-header-bar>
+        <ion-content>
+      <ul ng-repeat = "todo in todos" >
+
+  <!-- UPDATE -->
+  <li style = "list-style: none;">
+
+
+    <span style = "font-size:2em;"ng-class = "{'task' : todo.completed}"ng-hide = "viewing" ng-dblclick ="openForm(todo)">
+    <input type="checkbox" ng-checked = "todo.completed" ng-model ="checked" ng-change = "markCompleted(todo)">
+    {{todo.title}}
+    <button class = "btn btn-danger btn-xs" ng-click ="deleteToDo(todo)">X</button>
+    </span>
+    <span ng-show="editing">
+      <input autofocus type="text" ng-model = "todo.title" value ="{{todo.title}}">
+      <button class = "btn btn-info" ng-click = "editToDo(todo)">Edit</button>
+      <button class = "btn btn-danger " ng-click ="deleteToDo(todo)">X</button>
+    </span>
+  <!-- DELETE -->
+
+  </li>
+</ul>
+      <label class = "item item-input">
+        <span class="input-label"></span> Name:
+          <input type="text" ng-model="newToDo.title">
+        <!-- <span class="input-label"></span> Description:
+          <input type="text" ng-model="newToDo.description"> -->
+      </label>
+        <button ng-click="addToDo()">Submit</button>
+        </ion-content>
+</ion-pane>
